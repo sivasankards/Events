@@ -1,0 +1,104 @@
+﻿@model EventManagementSystem.Models.UpcomingPassedEventsViewModel
+
+@{
+    ViewBag.Title = "My Events";
+}
+<h1 class="event-group-heading">Upcoming Events</h1>
+
+<div class="row">
+    @*@if (Model.UpcomingEvents.Any())
+        {
+            @Html.DisplayFor(x => x.UpcomingEvents)
+        }
+        else
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
+        }*@
+    <table id="UpcomingEvents" class="display" style="width:100%"></table>
+</div>
+
+<h1 class="event-group-heading">Passed Events</h1>
+
+<div class="row">
+    @*@if (Model.PassedEvents.Any())
+        {
+            @Html.DisplayFor(x => x.PassedEvents)
+        }
+        else
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
+        }*@
+    <table id="PassedEvents" class="display" style="width:100%"></table>
+</div>
+@*@Html.Partial("_Events")*@
+
+@section scripts {
+    <script type="text/javascript">
+        var userId = '@Request.RequestContext.HttpContext.Session["UserId"]';
+        $(document).ready(function () {
+
+            onload();
+
+    });
+
+        function onload() {
+
+            var datamodel = {
+                UserId : userId
+            }
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:52077/api/Account/POSTMyEvents",
+                data: datamodel,
+                success: function (data) {
+                    $("#UpcomingEvents").empty();
+                    if (data.Table.length > 0) {
+                        $("#UpcomingEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th><th>IsPublic</th></tr>");
+                        for (var i = 0; i < data.Table.length; i++) {
+                            //debugger
+                            $("#UpcomingEvents").append("<tr><td>" +
+                                data.Table[i].Title + "</td> <td>" +
+                                data.Table[i].StartDateTime + "</td> <td>" +
+                                data.Table[i].Duration + "</td> <td>" +
+                                data.Table[i].Description + "</td><td>" +
+                                data.Table[i].Location + "</td><td>" +
+                                data.Table[i].IsPublic + "</td></tr>"
+                            );
+                        }
+                    }
+                    else {
+                        $("#UpcomingEvents").append("<tr><td> No Events Found </td></tr>");
+                    }
+
+                    $("#PassedEvents").empty();
+                    if (data.Table1.length > 0) {
+                        $("#PassedEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th><th>IsPublic</th></tr>");
+                        for (var i = 0; i < data.Table1.length; i++) {
+                            //debugger
+                            $("#PassedEvents").append("<tr><td>" +
+                                data.Table1[i].Title + "</td> <td>" +
+                                data.Table1[i].StartDateTime + "</td> <td>" +
+                                data.Table1[i].Duration + "</td> <td>" +
+                                data.Table1[i].Description + "</td><td>" +
+                                data.Table1[i].Location + "</td><td>" +
+                                data.Table1[i].IsPublic + "</td></tr>"
+                            );
+                        }
+                    }
+                    else {
+                        $("#PassedEvents").append("<tr><td> No Events Found </td></tr>");
+                    }
+                },
+                failure: function (data) {
+                    alert(data.responseText);
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
+
+        }
+
+
+    </script>
+}

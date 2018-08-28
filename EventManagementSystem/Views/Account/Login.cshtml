@@ -1,0 +1,97 @@
+﻿@model EventManagementSystem.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@*LoginViewModel*@</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.HiddenFor(m => m.HdnEmail, new { id = "hdnEmail" })*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" id="btnLogin" class="btn btn-default" onclick="Login()" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+
+<script type="text/javascript">
+    //$('#btnLogin').click(function () {
+    //    //debugger
+    //    var datamodel = {
+    //        Email: $("#Email").val(),
+    //        Password: $("#Password").val(),            
+    //    }
+
+    //    $.ajax({
+    //        url: 'http://localhost:52077/api/Account/POSTLogin',
+    //        data: datamodel,
+    //        type: "POST",
+    //        success: function (savingStatus) {
+    //            alert('Success');
+    //            window.location.href("http://localhost:52043/Account/SetAuthentication" + datamodel.Email)
+    //        },
+    //        error: function (xhr, ajaxOptions, thrownError) {
+    //            alert('Error');
+    //        }
+    //    });
+
+    //});
+
+    function Login()
+    {
+        var datamodel = {
+            Email: $("#Email").val(),
+            Password: $("#Password").val(),
+        }
+
+        $.ajax({
+            url: 'http://localhost:52077/api/Account/POSTLogin',
+            data: datamodel,
+            type: "POST",
+            cache: false,
+            success: function (data) {
+                alert('Success');
+                //$("#hdnEmail").val(data);
+                window.location.href = "http://localhost:52043/Account/SetAuthentication?Name=" + data.Table[0].Name + "&Email=" + data.Table[0].Email + "&Id=" + data.Table[0].Id;
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert('Error');
+            }
+        });
+    }
+</script>
+}
