@@ -84,7 +84,7 @@
             type: "POST",
             cache: false,
             success: function (data) {
-                alert('Success');
+                alert('Login Successful');
                 //$("#hdnEmail").val(data);
                 window.location.href = "http://localhost:52043/Account/SetAuthentication?Name=" + data.Table[0].Name + "&Email=" + data.Table[0].Email + "&Id=" + data.Table[0].Id;
             },
