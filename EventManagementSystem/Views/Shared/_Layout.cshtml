@@ -30,6 +30,12 @@
                         <li>
                             @Html.ActionLink("Create Event", "Create", "Event")
                         </li>
+                        <li>
+                            @Html.ActionLink("My Friends", "Index", "Friends")
+                        </li>
+                        <li>
+                            @Html.ActionLink("My Notifications", "Index", "Notification")
+                        </li>
                         <li style="color:orangered"> Welcome @Html.Encode(User.Identity.Name)</li>
                         <li>
                             @Html.ActionLink("Log Out", "LogOut", "Account")

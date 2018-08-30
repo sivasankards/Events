@@ -98,6 +98,8 @@
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\EventInputModel.cs" />
     <Compile Include="Models\EventViewModel.cs" />
+    <Compile Include="Models\FriendsModel.cs" />
+    <Compile Include="Models\NotificationModel.cs" />
     <Compile Include="Models\UpcomingPassedEventsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

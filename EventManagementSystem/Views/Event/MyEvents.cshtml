@@ -30,6 +30,31 @@
         }*@
     <table id="PassedEvents" class="display" style="width:100%"></table>
 </div>
+
+@*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <input type="hidden" id="Event" />
+                <h4 class="modal-title">Invite Friends</h4>
+            </div>
+            <div class="modal-body">
+                <table id="InviteFriends" class="display" style="width:100%"></table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="btnInvite" data-dismiss="modal">Invite</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 @*@Html.Partial("_Events")*@
 
 @section scripts {
@@ -53,7 +78,7 @@
                 success: function (data) {
                     $("#UpcomingEvents").empty();
                     if (data.Table.length > 0) {
-                        $("#UpcomingEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th><th>IsPublic</th></tr>");
+                        $("#UpcomingEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th></tr>");
                         for (var i = 0; i < data.Table.length; i++) {
                             //debugger
                             $("#UpcomingEvents").append("<tr><td>" +
@@ -62,7 +87,19 @@
                                 data.Table[i].Duration + "</td> <td>" +
                                 data.Table[i].Description + "</td><td>" +
                                 data.Table[i].Location + "</td><td>" +
-                                data.Table[i].IsPublic + "</td></tr>"
+                                "<button type='button' class='btn btn- info btn- lg' id='" + data.Table[i].Id + "' onclick='GetEventId(this)' data-toggle='modal' data-target='#myModal'>Invite Friends</button></td></tr>"
+                                //data.Table[i].IsPublic + "</td></tr>"
+                            );
+                        }
+
+                        //$("#UpcomingEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th></tr>");
+                        for (var i = 0; i < data.Table2.length; i++) {
+                            //debugger
+                            $("#InviteFriends").append("<tr><td style='width: 25%'>" +
+                                data.Table2[i].Name + "</td> <td style='width: 25%'>" +
+                                data.Table2[i].Email + "</td> <td style='width: 25%'>" +
+                                "<input type='checkbox' id='chk" + data.Table2[i].Id + "' /></td></tr>"
+                                //data.Table[i].IsPublic + "</td></tr>"
                             );
                         }
                     }
@@ -72,7 +109,7 @@
 
                     $("#PassedEvents").empty();
                     if (data.Table1.length > 0) {
-                        $("#PassedEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th><th>IsPublic</th></tr>");
+                        $("#PassedEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th></tr>");
                         for (var i = 0; i < data.Table1.length; i++) {
                             //debugger
                             $("#PassedEvents").append("<tr><td>" +
@@ -80,8 +117,8 @@
                                 data.Table1[i].StartDateTime + "</td> <td>" +
                                 data.Table1[i].Duration + "</td> <td>" +
                                 data.Table1[i].Description + "</td><td>" +
-                                data.Table1[i].Location + "</td><td>" +
-                                data.Table1[i].IsPublic + "</td></tr>"
+                                data.Table1[i].Location + "</td></tr>"
+                                //data.Table1[i].IsPublic + "</td></tr>"
                             );
                         }
                     }
@@ -97,6 +134,44 @@
                 }
             });
 
+        }
+
+        $('#btnInvite').click(function () {
+            var userId = '@Request.RequestContext.HttpContext.Session["UserId"]';
+            var checkedItems = $("input:checkbox[id^=chk]:checked");
+            var ids = [];
+            if (checkedItems) {
+                for (var i = 0; i < checkedItems.length; i++) {
+                    var id = checkedItems[i].getAttribute("id").replace("chk", "");
+                    ids.push(id);
+                }
+            }
+
+            var datamodel = {
+                UserId: userId,
+                FriendsList: ids.join(","),
+                EventId: $("#Event").val()
+            }
+
+            $.ajax({
+                url: 'http://localhost:52077/api/Account/POSTInviteFriends',
+                data: datamodel,
+                type: "POST",
+                cache: false,
+                success: function (data) {
+                    //document.getElementById(e.id).disabled = true;
+                    alert('Event Invite Sent');
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+
+        });
+
+        function GetEventId(e)
+        {
+            $("#Event").val(e.id);
         }
 
 

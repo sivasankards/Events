@@ -110,16 +110,7 @@ namespace EventsApi.Controllers
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlComm;
                     da.Fill(ds);
-                }
-                
-                //var PassedEvents = (from rw in ds.Tables[1].AsEnumerable()
-                //                    select new EventViewModel()
-                //                    {
-                //                        Id = Convert.ToInt32(rw["ID"]),
-                //                        Title = Convert.ToString(rw["Title"]),
-                //                        StartDateTime = Convert.ToDateTime(rw["StartDateTime"]),
-                //                        //Duration = TimeSpan.Parse(rw["Duration"])
-                //                    }
+                }               
             }
             catch (Exception ex)
             {
@@ -127,6 +118,145 @@ namespace EventsApi.Controllers
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, ds);
+        }
+
+        public HttpResponseMessage POSTFriendsList(FriendsModel model)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_GetMyFriends", conn);
+                    sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = sqlComm;
+                    da.Fill(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, ds);
+        }
+
+        public HttpResponseMessage POSTFriendRequest(FriendsModel model)
+        {
+            int affectedRows = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_AddFriend", conn);
+                    sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
+                    sqlComm.Parameters.AddWithValue("@FriendsId", model.FriendsId);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    affectedRows = (int)sqlComm.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
+        }
+
+        public HttpResponseMessage POSTMyNotification(NotificationModel model)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_GetNotification", conn);
+                    sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = sqlComm;
+                    da.Fill(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, ds);
+        }
+
+        public HttpResponseMessage POSTAcceptFriend(FriendsModel model)
+        {
+            int affectedRows = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_AcceptFriend", conn);
+                    sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
+                    sqlComm.Parameters.AddWithValue("@FriendsId", model.FriendsId);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    affectedRows = (int)sqlComm.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
+        }
+
+        public HttpResponseMessage POSTInviteFriends(FriendsModel model)
+        {
+            int affectedRows = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_InviteFriends", conn);
+                    sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
+                    sqlComm.Parameters.AddWithValue("@FriendsId", model.FriendsList);
+                    sqlComm.Parameters.AddWithValue("@EventId", model.EventId);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    affectedRows = (int)sqlComm.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
+        }
+
+        public HttpResponseMessage POSTAcceptInvite(FriendsModel model)
+        {
+            int affectedRows = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_AcceptInvite", conn);
+                    sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
+                    sqlComm.Parameters.AddWithValue("@FriendsId", model.FriendsId);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    affectedRows = (int)sqlComm.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
         }
     }
 }

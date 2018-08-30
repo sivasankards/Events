@@ -24,10 +24,6 @@ namespace EventManagementSystem.Controllers
 
         public ActionResult Create()
         {
-            //if(model != null && this.ModelState.IsValid)
-            //{
-
-            //}
             return View();
         }
     }
