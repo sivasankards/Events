@@ -43,9 +43,7 @@
                         }
                     }
                     if (data.Table1.length > 0) {
-                        //$("#MyNotification").append("<tr><th>Name</th><th>Email</th></tr>");
                         for (var i = 0; i < data.Table1.length; i++) {
-                            //debugger
                             $("#EventId").val(data.Table1[i].EventId);
                             $("#MyNotification").append("<tr><td> You have an event (" + data.Table1[i].Title + ") invite from " +
                                 data.Table1[i].Name + "</td> <td>" +
