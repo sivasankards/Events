@@ -2,6 +2,10 @@
 
 @*<script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+@Scripts.Render("~/bundles/jqueryval")  
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 <div class="form-horizontal">
     <h4>Register</h4>
     <hr />
@@ -40,32 +44,39 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Register" id="btnRegister" class="btn btn-default" />
+            <input type="submit" value="Register" id="btnRegister" class="btn btn-info" />
         </div>
     </div>
+
 </div>
+}
 @section scripts {
 <script type="text/javascript">
     $('#btnRegister').click(function () {
         //debugger
-        var model = {
-            Name: $("#Name").val(),
-            Password: $("#Password").val(),
-            Email: $("#Email").val(),
+        if ($("#Name").val() == "" || $("#Password").val() == "" || $("#ConfirmPassword").val() == "" || $("#Email").val() == "") {
+            //return false;
         }
-
-        $.ajax({
-            url: 'http://localhost:52077/api/Account/POSTRegisterUser',
-            data: model,
-            type: "POST",
-            success: function (savingStatus) {
-                alert('Success');
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert('Error');
+        else {
+            var model = {
+                Name: $("#Name").val(),
+                Password: $("#Password").val(),
+                Email: $("#Email").val(),
             }
-        });
 
+            $.ajax({
+                url: 'http://localhost:52077/api/Account/POSTRegisterUser',
+                data: model,
+                type: "POST",
+                success: function (savingStatus) {
+                    alert('Registration Successful');
+                    window.location.href = "http://localhost:52043/Account/Login";
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+        }
     });
 </script>
 }

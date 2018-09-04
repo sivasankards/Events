@@ -7,6 +7,7 @@ namespace EventsApi.Models
 {
     public class EventInputModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public DateTime StartDateTime { get; set; }
         public TimeSpan? Duration { get; set; }

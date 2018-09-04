@@ -15,6 +15,11 @@ namespace EventManagementSystem.Controllers
             return View();
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         public ActionResult Login()
         {
             return View();

@@ -5,54 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<h2>My Friends</h2>*@
-
 <h1 class="event-group-heading">My Friends</h1>
 
 <div class="row">
-    <table id="MyFriends" class="display" style="width:100%"></table>
+    <table id="MyFriends" class="table table-striped" style="width:50%"></table>
 </div>
 
 <h1 class="event-group-heading">Friend Suggestions</h1>
 
 <div class="row">
-    <table id="FriendSuggestion" class="display" style="width:100%"></table>    
+    <table id="FriendSuggestion" class="table table-striped" style="width:50%"></table>    
 </div>
-
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>*@
 
 @section Scripts {
 
@@ -88,13 +51,13 @@
 
                     $("#FriendSuggestion").empty();
                     if (data.Table1.length > 0) {
-                        $("#FriendSuggestion").append("<tr><th>Name</th><th>Email</th></tr>");
+                        $("#FriendSuggestion").append("<tr><th>Name</th><th>Email</th><th>Action</th></tr>");
                         for (var i = 0; i < data.Table1.length; i++) {
                             //debugger
                             $("#FriendSuggestion").append("<tr><td>" +
                                 data.Table1[i].Name + "</td> <td>" +
                                 data.Table1[i].Email + "</td> <td>" +
-                                "<input type='button' onclick='addfriend(this)' id='"+data.Table1[i].Id+"' value='Add Friend' /></td></tr>"
+                                "<input type='button' class='btn btn-default' onclick='addfriend(this)' id='"+data.Table1[i].Id+"' value='Add Friend' /></td></tr>"
                             );
                         }
                     }

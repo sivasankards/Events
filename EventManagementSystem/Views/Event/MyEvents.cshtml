@@ -3,49 +3,32 @@
 @{
     ViewBag.Title = "My Events";
 }
+
 <h1 class="event-group-heading">Upcoming Events</h1>
 
 <div class="row">
-    @*@if (Model.UpcomingEvents.Any())
-        {
-            @Html.DisplayFor(x => x.UpcomingEvents)
-        }
-        else
-        {
-            <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
-        }*@
-    <table id="UpcomingEvents" class="display" style="width:100%"></table>
+    <table id="UpcomingEvents" class="table table-striped" style="width:100%"></table>
 </div>
 
 <h1 class="event-group-heading">Passed Events</h1>
 
 <div class="row">
-    @*@if (Model.PassedEvents.Any())
-        {
-            @Html.DisplayFor(x => x.PassedEvents)
-        }
-        else
-        {
-            <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
-        }*@
-    <table id="PassedEvents" class="display" style="width:100%"></table>
+    <table id="PassedEvents" class="table table-striped" style="width:100%"></table>
 </div>
-
-@*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-
+        
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <input type="hidden" id="Event" />
+                <input type="hidden" id="Event" name="Event" />
                 <h4 class="modal-title">Invite Friends</h4>
             </div>
             <div class="modal-body">
-                <table id="InviteFriends" class="display" style="width:100%"></table>
+                <table id="InviteFriends" class="table" style="width:100%"></table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="btnInvite" data-dismiss="modal">Invite</button>
@@ -55,7 +38,6 @@
 
     </div>
 </div>
-@*@Html.Partial("_Events")*@
 
 @section scripts {
     <script type="text/javascript">
@@ -78,7 +60,7 @@
                 success: function (data) {
                     $("#UpcomingEvents").empty();
                     if (data.Table.length > 0) {
-                        $("#UpcomingEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th></tr>");
+                        $("#UpcomingEvents").append("<tr><th>Title</th><th>StartDateTime</th><th>Duration</th><th>Description</th><th>Location</th><th>Action</th></tr>");
                         for (var i = 0; i < data.Table.length; i++) {
                             //debugger
                             $("#UpcomingEvents").append("<tr><td>" +
@@ -87,7 +69,12 @@
                                 data.Table[i].Duration + "</td> <td>" +
                                 data.Table[i].Description + "</td><td>" +
                                 data.Table[i].Location + "</td><td>" +
-                                "<button type='button' class='btn btn- info btn- lg' id='" + data.Table[i].Id + "' onclick='GetEventId(this)' data-toggle='modal' data-target='#myModal'>Invite Friends</button></td></tr>"
+                                "<a href='#' id='" + data.Table[i].Id + "' onclick='GetEventId(this)' data-toggle='modal' data-target='#myModal'>Invite Friends</a><span>  </span>" +
+                                "<a href='#' id='Edit" + data.Table[i].Id + "' onclick='EditEvent(this)'>Edit</a><span>  </span>" +
+                                "<a href='#' id='Delete" + data.Table[i].Id + "' onclick='DeleteEvent(this)'>Delete</a></td></tr>"
+                                //"<button type='button' class='btn btn-info' id='" + data.Table[i].Id + "' onclick='GetEventId(this)' data-toggle='modal' data-target='#myModal'>Invite Friends</button>" +
+                                //"<input type='submit' class='btn btn-info' value='Edit' id='Edit" + data.Table[i].Id + "' onclick='EditEvent(this)'/>" +
+                                //"<button type='button' class='btn btn-info' id='Delete" + data.Table[i].Id + "' onclick='DeleteEvent(this)'>Delete</button></td></tr>"
                                 //data.Table[i].IsPublic + "</td></tr>"
                             );
                         }
@@ -159,7 +146,6 @@
                 type: "POST",
                 cache: false,
                 success: function (data) {
-                    //document.getElementById(e.id).disabled = true;
                     alert('Event Invite Sent');
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -173,6 +159,78 @@
         {
             $("#Event").val(e.id);
         }
+
+        function EditEvent(e) {
+            $("#Event").val(e.id);
+            var id = $("#Event").val().replace("Edit", "");
+            window.location.href = "@Url.Action("Edit", "Event")" +"/"+ id ;
+        }
+
+        function DeleteEvent(e) {
+            $("#Event").val(e.id);
+            var id = $("#Event").val().replace("Delete", "");
+            var model = {
+                Id: id
+            }
+
+            $.ajax({
+                url: 'http://localhost:52077/api/Account/POSTDeleteEvent',
+                data: model,
+                type: "POST",
+                success: function (savingStatus) {
+                    alert('Event Deleted Successfully');
+                    onload();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+        }
+
+        //function EditEvent(e) {
+        //    var eventId = $("#Event").val(e.id);
+        //    var id = $("#Event").val().replace("Edit", "");
+        //    var tds = $(this).closest('tr').children('td');
+        //    //alert(tds[0].innerHTML)
+        //    //var title = tds[0].innerHTML;
+        //    //var startDateTime = tds[1].innerHTML;
+        //    //var duration = tds[2].innerHTML;
+        //    //var description = tds[3].innerHTML;
+        //    //var location = tds[4].innerHTML;
+        //    //var isPublic = tds[5].innerHTML;
+
+        //    var model = {
+        //        //Title: title,
+        //        //StartDateTime: startDateTime,
+        //        //Duration: duration,
+        //        //Description: description,
+        //        //Location: location,
+        //        //IsPublic: isPublic,
+        //        Id: id,
+        //    }
+
+        //    $.ajax({
+        //        url: 'http://localhost:52077/api/Account/POSTEventDetails',
+        //        data: model,
+        //        type: "POST",
+        //        success: function (data) {
+        //            //alert('Event Saved Successfully');
+        //            var datamodel = {
+        //                Title: data.Table[0].Title,
+        //                StartDateTime: data.Table[0].StartDateTime,
+        //                Duration: data.Table[0].Duration,
+        //                Description: data.Table[0].Description,
+        //                Location: data.Table[0].Location,
+        //                IsPublic: data.Table[0].IsPublic,
+        //                Id: id,
+        //            }
+        //            window.location.href = "http://localhost:52043/Event/Edit?Model=" + datamodel;
+        //        },
+        //        error: function (xhr, ajaxOptions, thrownError) {
+        //            alert('Error');
+        //        }
+        //    });
+        //}
 
 
     </script>

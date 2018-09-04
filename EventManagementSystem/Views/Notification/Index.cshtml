@@ -5,13 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<h2>My Notification</h2>*@
+@*<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>*@
 
 <h1 class="event-group-heading">My Notification</h1>
 
 <div class="row">
     <input type="hidden" id="EventId" />
-    <table id="MyNotification" class="display" style="width:100%"></table>
+    <table id="MyNotification" class="table table-striped" style="width:50%"></table>
 </div>
 
 @section Scripts {
@@ -38,7 +42,7 @@
                             //debugger
                             $("#MyNotification").append("<tr><td> You have a friend request from " +
                                 data.Table[i].Name + "</td> <td>" +
-                                "<input type='button' onclick='acceptfriend(this)' id='"+ data.Table[i].Id + "' value='Accept Friend Request' /></td></tr>"
+                                "<input type='button' class='btn btn-default' onclick='acceptfriend(this)' id='"+ data.Table[i].Id + "' value='Accept Friend Request' /></td></tr>"
                             );
                         }
                     }
@@ -47,7 +51,7 @@
                             $("#EventId").val(data.Table1[i].EventId);
                             $("#MyNotification").append("<tr><td> You have an event (" + data.Table1[i].Title + ") invite from " +
                                 data.Table1[i].Name + "</td> <td>" +
-                                "<input type='button' onclick='acceptinvite(this)' id='" + data.Table1[i].Id + "' value='Accept Event Invite' /></td></tr>"
+                                "<input type='button' class='btn btn-default' onclick='acceptinvite(this)' id='" + data.Table1[i].Id + "' value='Accept Event Invite' /></td></tr>"
                             );
                         }
                     }

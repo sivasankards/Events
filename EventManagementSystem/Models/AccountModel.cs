@@ -8,9 +8,19 @@ namespace EventManagementSystem.Models
 {
     public class AccountModel
     {
+        [Required]
         public string Name { get; set; }
+        [Required]
+        [Display(Name = "Email")]
+        [EmailAddress]
         public string Email { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string Password { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "ConfirmPassword")]
         public string ConfirmPassword { get; set; }
     }
 

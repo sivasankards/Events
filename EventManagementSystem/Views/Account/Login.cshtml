@@ -6,7 +6,7 @@
 }
 
 <h2>Login</h2>
-
+@Scripts.Render("~/bundles/jqueryval")
 
 @using (Html.BeginForm()) 
 {
@@ -41,10 +41,6 @@
     </div>
 }
 
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
-
 @section Scripts {
     @*@Scripts.Render("~/bundles/jqueryval")*@
 
@@ -73,25 +69,30 @@
 
     function Login()
     {
-        var datamodel = {
-            Email: $("#Email").val(),
-            Password: $("#Password").val(),
+        if ($("#Email").val() == "" || $("#Password").val() == "") {
+            //return false;
         }
-
-        $.ajax({
-            url: 'http://localhost:52077/api/Account/POSTLogin',
-            data: datamodel,
-            type: "POST",
-            cache: false,
-            success: function (data) {
-                alert('Login Successful');
-                //$("#hdnEmail").val(data);
-                window.location.href = "http://localhost:52043/Account/SetAuthentication?Name=" + data.Table[0].Name + "&Email=" + data.Table[0].Email + "&Id=" + data.Table[0].Id;
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert('Error');
+        else {
+            var datamodel = {
+                Email: $("#Email").val(),
+                Password: $("#Password").val(),
             }
-        });
+
+            $.ajax({
+                url: 'http://localhost:52077/api/Account/POSTLogin',
+                data: datamodel,
+                type: "POST",
+                cache: false,
+                success: function (data) {
+                    alert('Login Successful');
+                    //$("#hdnEmail").val(data);
+                    window.location.href = "http://localhost:52043/Account/SetAuthentication?Name=" + data.Table[0].Name + "&Email=" + data.Table[0].Email + "&Id=" + data.Table[0].Id;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+        }
     }
 </script>
 }

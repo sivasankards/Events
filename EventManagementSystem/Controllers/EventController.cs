@@ -17,13 +17,23 @@ namespace EventManagementSystem.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult MyEvents()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult Create()
         {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            //string eventId = Request["Event"].ToString();
+            ViewBag.EventId = id;
             return View();
         }
     }

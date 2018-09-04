@@ -258,5 +258,80 @@ namespace EventsApi.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
         }
+
+        public HttpResponseMessage POSTEventDetails(EventInputModel model)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_GetEventDetails", conn);
+                    sqlComm.Parameters.AddWithValue("@EventId", model.Id);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = sqlComm;
+                    da.Fill(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, ds);
+        }
+
+        public HttpResponseMessage POSTEditEvent(EventInputModel model)
+        {
+            int affectedRows = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_EditEvent", conn);
+                    sqlComm.Parameters.AddWithValue("@Title", model.Title);
+                    sqlComm.Parameters.AddWithValue("@StartDateTime", model.StartDateTime);
+                    sqlComm.Parameters.AddWithValue("@Duration", model.Duration);
+                    sqlComm.Parameters.AddWithValue("@Description", model.Description);
+                    sqlComm.Parameters.AddWithValue("@Location", model.Location);
+                    sqlComm.Parameters.AddWithValue("@IsPublic", model.IsPublic);
+                    sqlComm.Parameters.AddWithValue("@EventId", model.Id);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    affectedRows = (int)sqlComm.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
+        }
+
+        public HttpResponseMessage POSTDeleteEvent(EventInputModel model)
+        {
+            int affectedRows = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_DeleteEvent", conn);
+                    sqlComm.Parameters.AddWithValue("@EventId", model.Id);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    affectedRows = (int)sqlComm.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
+        }
     }
 }

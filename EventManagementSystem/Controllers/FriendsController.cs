@@ -9,6 +9,7 @@ namespace EventManagementSystem.Controllers
     public class FriendsController : Controller
     {
         // GET: Friends
+        [Authorize]
         public ActionResult Index()
         {
             return View();

@@ -9,6 +9,7 @@ namespace EventManagementSystem.Controllers
     public class NotificationController : Controller
     {
         // GET: Notification
+        [Authorize]
         public ActionResult Index()
         {
             return View();
