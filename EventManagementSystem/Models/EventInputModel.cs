@@ -27,6 +27,9 @@ namespace EventManagementSystem.Models
 
         [Display(Name = "Is Public?")]
         public bool IsPublic { get; set; }
+        [Display(Name = "TicketRate(in Rs.)")]
+        public string TicketRate { get; set; }
+        public int Seats { get; set; }
 
         public static EventInputModel CreateFromEvent(Event e)
         {

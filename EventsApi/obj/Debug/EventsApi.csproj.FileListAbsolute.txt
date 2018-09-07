@@ -1,0 +1,90 @@
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\csc.exe
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\csc.exe.config
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\csc.rsp
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\csi.exe
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\csi.rsp
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\System.AppContext.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\vbc.exe
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\vbc.exe.config
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\vbc.rsp
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\VBCSCompiler.exe
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\EventsApi.dll.config
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\EventsApi.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\EventsApi.pdb
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\Newtonsoft.Json.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Net.Http.Formatting.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Web.Cors.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Web.Http.Cors.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Web.Http.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Web.Http.WebHost.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Net.Http.Formatting.xml
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Web.Http.xml
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Web.Http.Cors.xml
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\Newtonsoft.Json.xml
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\bin\System.Web.Http.WebHost.xml
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\obj\Debug\EventsApi.csprojResolveAssemblyReference.cache
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\obj\Debug\EventsApi.dll
+C:\Users\M1047734\documents\visual studio 2017\Projects\EventManagementSystem\EventsApi\obj\Debug\EventsApi.pdb
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\csc.exe
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\csc.exe.config
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\csc.rsp
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\csi.exe
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\csi.rsp
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\System.AppContext.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\System.Collections.Immutable.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\System.IO.FileSystem.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\System.Reflection.Metadata.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\vbc.exe
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\vbc.exe.config
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\vbc.rsp
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\VBCSCompiler.exe
+D:\My Project\EventManagementSystem\EventsApi\bin\roslyn\VBCSCompiler.exe.config
+D:\My Project\EventManagementSystem\EventsApi\bin\EventsApi.dll.config
+D:\My Project\EventManagementSystem\EventsApi\bin\EventsApi.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\EventsApi.pdb
+D:\My Project\EventManagementSystem\EventsApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\Newtonsoft.Json.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Net.Http.Formatting.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Web.Cors.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Web.Http.Cors.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Web.Http.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Web.Http.WebHost.dll
+D:\My Project\EventManagementSystem\EventsApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Net.Http.Formatting.xml
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Web.Http.xml
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Web.Http.Cors.xml
+D:\My Project\EventManagementSystem\EventsApi\bin\Newtonsoft.Json.xml
+D:\My Project\EventManagementSystem\EventsApi\bin\System.Web.Http.WebHost.xml
+D:\My Project\EventManagementSystem\EventsApi\obj\Debug\EventsApi.csprojResolveAssemblyReference.cache
+D:\My Project\EventManagementSystem\EventsApi\obj\Debug\EventsApi.dll
+D:\My Project\EventManagementSystem\EventsApi\obj\Debug\EventsApi.pdb

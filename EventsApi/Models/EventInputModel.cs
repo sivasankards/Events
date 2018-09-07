@@ -14,6 +14,13 @@ namespace EventsApi.Models
         public string Description { get; set; }
         public string Location { get; set; }
         public bool IsPublic { get; set; }
+        public string TicketRate { get; set; }
+        public int Seats { get; set; }
         public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Mobile { get; set; }
+        public string AmountPaid { get; set; }
+        public string UserComments { get; set; }
     }
 }

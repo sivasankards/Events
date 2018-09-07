@@ -76,13 +76,15 @@ namespace EventsApi.Controllers
             {
                 using (SqlConnection conn = new SqlConnection(con))
                 {
-                    SqlCommand sqlComm = new SqlCommand("Usp_CreateEvent", conn);
+                    SqlCommand sqlComm = new SqlCommand("Usp_CreateNewEvent", conn);
                     sqlComm.Parameters.AddWithValue("@Title", model.Title);
                     sqlComm.Parameters.AddWithValue("@StartDateTime", model.StartDateTime);
                     sqlComm.Parameters.AddWithValue("@Duration", model.Duration);
                     sqlComm.Parameters.AddWithValue("@Description", model.Description);
                     sqlComm.Parameters.AddWithValue("@Location", model.Location);
-                    sqlComm.Parameters.AddWithValue("@IsPublic", model.IsPublic);
+                    //sqlComm.Parameters.AddWithValue("@IsPublic", model.IsPublic);
+                    sqlComm.Parameters.AddWithValue("@TicketRate", model.TicketRate);
+                    sqlComm.Parameters.AddWithValue("@Seats", model.Seats);
                     sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
                     sqlComm.CommandType = CommandType.StoredProcedure;
                     conn.Open();
@@ -105,7 +107,7 @@ namespace EventsApi.Controllers
                 using (SqlConnection conn = new SqlConnection(con))
                 {
                     SqlCommand sqlComm = new SqlCommand("Usp_GetMyEvents", conn);
-                    sqlComm.Parameters.AddWithValue("@UserId", model.UserId);                    
+                    //sqlComm.Parameters.AddWithValue("@UserId", model.UserId);                    
                     sqlComm.CommandType = CommandType.StoredProcedure;
                     SqlDataAdapter da = new SqlDataAdapter();
                     da.SelectCommand = sqlComm;
@@ -295,7 +297,9 @@ namespace EventsApi.Controllers
                     sqlComm.Parameters.AddWithValue("@Duration", model.Duration);
                     sqlComm.Parameters.AddWithValue("@Description", model.Description);
                     sqlComm.Parameters.AddWithValue("@Location", model.Location);
-                    sqlComm.Parameters.AddWithValue("@IsPublic", model.IsPublic);
+                    sqlComm.Parameters.AddWithValue("@TicketRate", model.TicketRate);
+                    sqlComm.Parameters.AddWithValue("@Seats", model.Seats);
+                    //sqlComm.Parameters.AddWithValue("@IsPublic", model.IsPublic);
                     sqlComm.Parameters.AddWithValue("@EventId", model.Id);
                     sqlComm.CommandType = CommandType.StoredProcedure;
                     conn.Open();
@@ -332,6 +336,105 @@ namespace EventsApi.Controllers
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
+        }
+
+        public HttpResponseMessage POSTGetAllEvents()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_GetAllEventDetails", conn);
+                    //sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = sqlComm;
+                    da.Fill(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, ds);
+        }
+
+        public HttpResponseMessage POSTEventAttendees(EventInputModel model)
+        {
+            int affectedRows = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_InsertEventAttendees", conn);
+                    sqlComm.Parameters.AddWithValue("@Name", model.Name);
+                    sqlComm.Parameters.AddWithValue("@Email", model.Email);
+                    sqlComm.Parameters.AddWithValue("@Mobile", model.Mobile);
+                    sqlComm.Parameters.AddWithValue("@NoOfSeats", model.Seats);
+                    sqlComm.Parameters.AddWithValue("@AmountPaid", model.AmountPaid);
+                    sqlComm.Parameters.AddWithValue("@EventId", model.Id);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    affectedRows = (int)sqlComm.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
+        }
+
+        public HttpResponseMessage POSTUserComments(EventInputModel model)
+        {
+            int affectedRows = 0;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_InsertUserComments", conn);
+                    sqlComm.Parameters.AddWithValue("@Name", model.Name);
+                    sqlComm.Parameters.AddWithValue("@Email", model.Email);
+                    sqlComm.Parameters.AddWithValue("@Comments", model.UserComments);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    conn.Open();
+                    affectedRows = (int)sqlComm.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
+        }
+
+        public HttpResponseMessage POSTEventHistory()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    SqlCommand sqlComm = new SqlCommand("Usp_GetEventHistory", conn);
+                    //sqlComm.Parameters.AddWithValue("@UserId", model.UserId);
+                    sqlComm.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    da.SelectCommand = sqlComm;
+                    da.Fill(ds);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, ds);
         }
     }
 }

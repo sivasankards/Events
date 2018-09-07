@@ -27,6 +27,7 @@ namespace EventManagementSystem.Controllers
         public ActionResult Create()
         {
             return View();
+            //return RedirectToAction("MyEvents");
         }
 
         [Authorize]
@@ -34,6 +35,11 @@ namespace EventManagementSystem.Controllers
         {
             //string eventId = Request["Event"].ToString();
             ViewBag.EventId = id;
+            return View();
+        }
+
+        public ActionResult EventHistory()
+        {
             return View();
         }
     }
