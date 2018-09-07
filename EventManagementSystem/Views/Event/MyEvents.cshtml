@@ -8,7 +8,7 @@
 
 <div class="row">
     <table id="UpcomingEvents" class="table table-bordered table-responsive table-hover" style="width:100%">
-        <thead>
+        <thead style="background-color: darkturquoise;">
         <tr>
             <th>Title</th>
             <th>StartDateTime</th>
@@ -29,9 +29,10 @@
 <h1 class="event-group-heading">Passed Events</h1>
 
 <div class="row">
-    <input type="button" value="Export to Excel" id="btnExportToExcel" class="btn btn-default" />
+    @*<input type="button" value="Export to Excel" id="btnExportToExcel" class="btn btn-default" />*@
+    <img src="../images/Excel.png" id="btnExportToExcel" title="Export to Excel" style="cursor:pointer;float:right;width:30px;" />
     <table id="PassedEvents" class="table table-bordered table-responsive table-hover" style="width:100%">
-        <thead>
+        <thead style="background-color: darkturquoise;">
             <tr>
                 <th>Title</th>
                 <th>StartDateTime</th>
@@ -69,7 +70,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
+        
     </div>
 </div>
 <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -130,8 +131,10 @@
                                 data.Table[i].BookedSeats + "</td><td>" +
                                 data.Table[i].CreatedDateTime + "</td><td>"+
                                 //"<a href='#' id='" + data.Table[i].Id + "' onclick='GetEventId(this)' data-toggle='modal' data-target='#myModal'>Invite Friends</a><span>  </span>" +
-                                "<a href='#' id='Edit" + data.Table[i].Id + "' onclick='EditEvent(this)'>Edit</a><span>  </span>" +
-                                "<a href='#' id='Delete" + data.Table[i].Id + "' onclick='DeleteEvent(this)' data-toggle='modal' data-target='#myModal'>Delete</a></td></tr>"
+                                //"<a href='#' id='Edit" + data.Table[i].Id + "' onclick='EditEvent(this)'>Edit</a><span>  </span>" +
+                                "<img src='../images/Edit.png' title='Edit' id='Edit" + data.Table[i].Id + "' onclick='EditEvent(this)' style='width: 30px;cursor: pointer;' />"+
+                                "<img src='../images/Delete.png' title='Delete' id='Delete" + data.Table[i].Id + "' onclick='DeleteEvent(this)' style='width: 30px;cursor: pointer;' data-toggle='modal' data-target='#myModal'/></td></tr>" 
+                                //"<a href='#' id='Delete" + data.Table[i].Id + "' onclick='DeleteEvent(this)' data-toggle='modal' data-target='#myModal'>Delete</a></td></tr>"
                                 //"<button type='button' class='btn btn-info' id='" + data.Table[i].Id + "' onclick='GetEventId(this)' data-toggle='modal' data-target='#myModal'>Invite Friends</button>" +
                                 //"<input type='submit' class='btn btn-info' value='Edit' id='Edit" + data.Table[i].Id + "' onclick='EditEvent(this)'/>" +
                                 //"<button type='button' class='btn btn-info' id='Delete" + data.Table[i].Id + "' onclick='DeleteEvent(this)'>Delete</button></td></tr>"

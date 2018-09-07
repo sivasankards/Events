@@ -214,6 +214,8 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -238,11 +240,14 @@
     <Content Include="Global.asax" />
     <Content Include="images\bg.png" />
     <Content Include="images\chicago.jpg" />
+    <Content Include="images\Delete.png" />
     <Content Include="images\demo\bg-slide-01.jpg" />
     <Content Include="images\demo\bg-slide-02.jpg" />
     <Content Include="images\demo\blog1.jpg" />
     <Content Include="images\demo\blog2.jpg" />
     <Content Include="images\demo\blog3.jpg" />
+    <Content Include="images\Edit.png" />
+    <Content Include="images\Excel.png" />
     <Content Include="images\facebook.png" />
     <Content Include="images\google-plus.png" />
     <Content Include="images\img13.jpg" />
@@ -291,8 +296,6 @@
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -397,7 +400,12 @@
     <Content Include="css\fonts\fontawesome-webfontba72.woff" />
     <Content Include="css\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="css\fonts\VtksMoney2.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\datatables.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -444,15 +452,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
