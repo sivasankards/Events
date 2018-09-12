@@ -191,10 +191,10 @@
                     <h2>Events Schedule</h2>
                     <p class="sub-text text-center">Check out the event details</p>
                 </div>
-                <button type="button" id="btnCollapse" class="btn btn-info" data-toggle="collapse" data-target=".timeline-body">
+                @*<button type="button" id="btnCollapse" class="btn btn-info" data-toggle="collapse" data-target=".timeline-body">
                     <span class="glyphicon glyphicon-collapse-up"></span> 
                     Collapse
-                </button>
+                </button>*@
                 <ul id="eventDetails" class="timeline">
                     <li class="clearfix no-float"></li>
                 </ul>
@@ -240,7 +240,7 @@
                                 <input type="email" class="form-control" id="your_email" placeholder="Enter your email" required>
                             </div>
                             <div class="form-group">
-                                <textarea name="InputMessage" id="user_message" class="form-control" placeholder="Enter your feedback/suggestion" rows="5" required></textarea>
+                                <textarea name="InputMessage" id="user_message" class="form-control" placeholder="Enter your comments here" rows="5" required></textarea>
                             </div>
                             <button type="submit" id="btnSubmitComments" class="btn medium">Let us know</button>
                         </form>
@@ -352,137 +352,109 @@
     <script src="~/js/owl.carousel.min.js"></script>
     <script src="~/js/main.js"></script>
     <script type="text/javascript">
+        var apiUrl = '@(System.Configuration.ConfigurationManager.AppSettings["ApiUrl"].ToString())'
+        var webappUrl = '@(System.Configuration.ConfigurationManager.AppSettings["WebUrl"].ToString())'
 
         $(document).ready(function () {
-            @*var userId = '@Request.RequestContext.HttpContext.Session["UserId"]';*@    
 
-            $(".timeline-body").on("hide.bs.collapse", function () {
-                //$("#btnCollapse").html('<span class="glyphicon glyphicon-collapse-down"></span> Expand');
-                $("#btnCollapse").text("Expand");
-            });
-            $(".timeline-body").on("show.bs.collapse", function () {
-                //$("#btnCollapse").html('<span class="glyphicon glyphicon-collapse-up"></span> Collapse');
-                $("#btnCollapse").text("Collapse");
-            });
-
-		  $("#testimonial-container").owlCarousel({
-
-		      navigation : false, // Show next and prev buttons
-		      slideSpeed : 700,
-		      paginationSpeed : 400,
-		      singleItem:true,
-            });
-
-          //var model = {
-          //    UserId: userId
-          //}
-
-          $.ajax({
-              url: 'http://localhost:52077/api/Account/POSTGetAllEvents',
-              //data: model,
-              type: "POST",
-              success: function (data) {
-                  //alert('Success');
-                  //window.location.href = "http://localhost:52043/Account/Login";
-                  $("#eventDetails").empty();
-                  if (data.Table.length > 0) {
-
-                      for (var i = 0; i < data.Table.length; i++) {
-                          //debugger
-                          if (i % 2 == 0) {
-                              $("#eventDetails").append("<li>" +
-                                  "<div class='timeline-badge'>" +
-                                  "<a><i class='fa fa-circle' id=''></i></a>" +
-                                  "</div >" +
-                                  "<div class='timeline-panel'>" +
-                                  "<div class='timeline-heading'>" +
-                                  "<h4>" + data.Table[i].Title + "</h4>" +
-                                  "</div >" +
-                                  "<div class='timeline-body'>" +
-                                  "<p class='timeline-desc col-md-6'>" + data.Table[i].Description + "</p>" +
-                                  "<p class='timeline-other col-md-6'>" +
-
-                                  "<em class='timeline-item'>" +
-                                  "Venue : " + data.Table[i].Location +
-                                  "</em>" +
-                                  "<em class='timeline-item'>" +
-                                  "Seats Available : " + data.Table[i].Seats +
-                                  "</em>" +
-                                  "<em id='tkt" + data.Table[i].Id + "' value=" + data.Table[i].TicketRate + " class='timeline-item'>" +
-                                  "Ticket : Rs." + data.Table[i].TicketRate +
-                                  "</em>" +
-                                  "<em class='timeline-item'>" +
-                                  "Date : " + data.Table[i].StartDateTime +
-                                  "</em>" +
-                                  "<em class='timeline-item'>" +
-                                  "Duration : " + data.Table[i].Duration +
-                                  "</em>" +
-                                  "</p>" +
-                                  "<div><button type= 'button' class='btn btn-info' id= '" + data.Table[i].Id + "' onclick='GetTicketRate(this)' data-toggle='modal' data-target='#myModal'>Buy Tickets</button ></div>" +
-                                  "</div>" +
-
-                                  "</div>" +
-
-                                  "</li >"
-                              );
-                          }
-                          else {
-                              $("#eventDetails").append("<li class='timeline-inverted'>" +
-                                  "<div class='timeline-badge'>" +
-                                  "<a><i class='fa fa-circle' id=''></i></a>" +
-                                  "</div >" +
-                                  "<div class='timeline-panel'>" +
-                                  "<div class='timeline-heading'>" +
-                                  "<h4>" + data.Table[i].Title + "</h4>" +
-                                  "</div >" +
-                                  "<div class='timeline-body'>" +
-                                  "<p class='timeline-desc col-md-6'>" + data.Table[i].Description + "</p>" +
-                                  "<p class='timeline-other col-md-6'>" +
-
-                                  "<em class='timeline-item'>" +
-                                  "Venue : " + data.Table[i].Location +
-                                  "</em>" +
-                                  "<em class='timeline-item'>" +
-                                  "Seats Available : " + data.Table[i].Seats +
-                                  "</em>" +
-                                  "<em id='tkt" + data.Table[i].Id + "' value=" + data.Table[i].TicketRate + " class='timeline-item'>" +
-                                  "Ticket: Rs." + data.Table[i].TicketRate +
-                                  "</em>" +
-                                  "<em class='timeline-item'>" +
-                                  "Date : " + data.Table[i].StartDateTime +
-                                  "</em>" +
-                                  "<em class='timeline-item'>" +
-                                  "Duration : " + data.Table[i].Duration +
-                                  "</em>" +
-                                  "</p>" +
-                                  "<div><button type= 'button' class='btn btn-info' id= '" + data.Table[i].Id + "' onclick='GetTicketRate(this)' data-toggle='modal' data-target='#myModal'>Buy Tickets</button ></div>" +
-                                  "</div>" +
-
-                                  "</div>" +
-                                  "</li >"
-                              );
-                          }
-                      }
-                  }
-                  else {
-                      $("#eventDetails").append("<p> No Events Found </p>");
-                  }
-              },
-              error: function (xhr, ajaxOptions, thrownError) {
-                  alert('Error');
-              }
-          });
-
+            onload();
+		 
         });
 
-        $(".timeline-body").on("hide.bs.collapse", function () {
-            //$("#btnCollapse").html('<span class="glyphicon glyphicon-collapse-down"></span> Expand');
-            $("#btnCollapse").text("Expand");
-        });
-        $(".timeline-body").on("show.bs.collapse", function () {
-            //$("#btnCollapse").html('<span class="glyphicon glyphicon-collapse-up"></span> Collapse');
-            $("#btnCollapse").text("Collapse");
-        });
+        function onload() {
+            $.ajax({
+                url: apiUrl + 'api/Account/GetAllEvents',
+                //data: model,
+                type: "GET",
+                success: function (data) {
+                    $("#eventDetails").empty();
+                    if (data.Table.length > 0) {
+
+                        for (var i = 0; i < data.Table.length; i++) {
+                            if (i % 2 == 0) {
+                                $("#eventDetails").append("<li>" +
+                                    "<div class='timeline-badge'>" +
+                                    "<a><i class='fa fa-circle' id=''></i></a>" +
+                                    "</div >" +
+                                    "<div class='timeline-panel'>" +
+                                    "<div class='timeline-heading'>" +
+                                    "<h4>" + data.Table[i].Title + "</h4>" +
+                                    "</div >" +
+                                    "<div class='timeline-body'>" +
+                                    "<p class='timeline-desc col-md-6'>" + data.Table[i].Description + "</p>" +
+                                    "<p class='timeline-other col-md-6'>" +
+
+                                    "<em class='timeline-item'>" +
+                                    "Venue : " + data.Table[i].Location +
+                                    "</em>" +
+                                    "<em class='timeline-item'>" +
+                                    "Seats Available : " + data.Table[i].Seats +
+                                    "</em>" +
+                                    "<em id='tkt" + data.Table[i].Id + "' value=" + data.Table[i].TicketRate + " class='timeline-item'>" +
+                                    "Ticket : Rs." + data.Table[i].TicketRate +
+                                    "</em>" +
+                                    "<em class='timeline-item'>" +
+                                    "Date : " + data.Table[i].StartDateTime +
+                                    "</em>" +
+                                    "<em class='timeline-item'>" +
+                                    "Duration : " + data.Table[i].Duration +
+                                    "</em>" +
+                                    "</p>" +
+                                    "<div><button type= 'button' class='btn btn-info' id= '" + data.Table[i].Id + "' onclick='GetTicketRate(this)' data-toggle='modal' data-target='#myModal'>Buy Tickets</button ></div>" +
+                                    "</div>" +
+
+                                    "</div>" +
+
+                                    "</li >"
+                                );
+                            }
+                            else {
+                                $("#eventDetails").append("<li class='timeline-inverted'>" +
+                                    "<div class='timeline-badge'>" +
+                                    "<a><i class='fa fa-circle' id=''></i></a>" +
+                                    "</div >" +
+                                    "<div class='timeline-panel'>" +
+                                    "<div class='timeline-heading'>" +
+                                    "<h4>" + data.Table[i].Title + "</h4>" +
+                                    "</div >" +
+                                    "<div class='timeline-body'>" +
+                                    "<p class='timeline-desc col-md-6'>" + data.Table[i].Description + "</p>" +
+                                    "<p class='timeline-other col-md-6'>" +
+
+                                    "<em class='timeline-item'>" +
+                                    "Venue : " + data.Table[i].Location +
+                                    "</em>" +
+                                    "<em class='timeline-item'>" +
+                                    "Seats Available : " + data.Table[i].Seats +
+                                    "</em>" +
+                                    "<em id='tkt" + data.Table[i].Id + "' value=" + data.Table[i].TicketRate + " class='timeline-item'>" +
+                                    "Ticket: Rs." + data.Table[i].TicketRate +
+                                    "</em>" +
+                                    "<em class='timeline-item'>" +
+                                    "Date : " + data.Table[i].StartDateTime +
+                                    "</em>" +
+                                    "<em class='timeline-item'>" +
+                                    "Duration : " + data.Table[i].Duration +
+                                    "</em>" +
+                                    "</p>" +
+                                    "<div><button type= 'button' class='btn btn-info' id= '" + data.Table[i].Id + "' onclick='GetTicketRate(this)' data-toggle='modal' data-target='#myModal'>Buy Tickets</button ></div>" +
+                                    "</div>" +
+
+                                    "</div>" +
+                                    "</li >"
+                                );
+                            }
+                        }
+                    }
+                    else {
+                        $("#eventDetails").append("<p> No Events Found </p>");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+        }
 
         function Checkrate() {
             var noofrms = $("#NoofTkts").val();
@@ -534,7 +506,6 @@
         //});
 
         $('#btnBuyTickets').click(function () {
-            //debugger
             if ($("#txtName").val() == "" || $("#txtEmail").val() == "" || $("#txtMobile").val() == "" || $("#NoofTkts").val() == "") {
 
             }
@@ -549,12 +520,12 @@
                 }
 
                 $.ajax({
-                    url: 'http://localhost:52077/api/Account/POSTEventAttendees',
+                    url: apiUrl + 'api/Account/POSTEventAttendees',
                     data: model,
                     type: "POST",
                     success: function (savingStatus) {
                         alert('Thanks for purchansing the tickets');
-                        window.location.href = "http://localhost:52043/Home/Home";
+                        onload();
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         alert('Error');
@@ -563,8 +534,12 @@
             }
         });
 
-        $('#btnSubmitComments').click(function () {
-            //debugger
+        $('#btnSubmitComments').click(function (event) {
+            event.preventDefault();
+            SubmitComments();
+        });
+
+        function SubmitComments() {
             if ($("#user_name").val() == "" || $("#your_email").val() == "" || $("#user_message").val() == "") {
 
             }
@@ -576,7 +551,7 @@
                 }
 
                 $.ajax({
-                    url: 'http://localhost:52077/api/Account/POSTUserComments',
+                    url: apiUrl + 'api/Account/POSTUserComments',
                     data: model,
                     type: "POST",
                     success: function (savingStatus) {
@@ -584,14 +559,13 @@
                         $("#user_name").val(" ");
                         $("#your_email").val(" ");
                         $("#user_message").val(" ")
-                        //window.location.href = "http://localhost:52043/Home/Home";
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         alert('Error');
                     }
                 });
             }
-        });
+        }
 
     </script>
 </body>

@@ -338,7 +338,8 @@ namespace EventsApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, affectedRows);
         }
 
-        public HttpResponseMessage POSTGetAllEvents()
+        [HttpGet]
+        public HttpResponseMessage GetAllEvents()
         {
             DataSet ds = new DataSet();
             try

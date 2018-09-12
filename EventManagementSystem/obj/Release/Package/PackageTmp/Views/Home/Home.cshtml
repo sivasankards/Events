@@ -1,0 +1,592 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Event - Landing Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <!--== CSS Files ==-->
+    <link href="~/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="~/css/style.css" rel="stylesheet" media="screen">
+    <link href="~/css/font-awesome.css" rel="stylesheet" media="screen">
+    <link href="~/css/owl.carousel.css" rel="stylesheet" media="screen">
+    <link href="~/css/flexslider.css" rel="stylesheet" media="screen">
+    <link href="~/css/fancySelect.css" rel="stylesheet" media="screen">
+    <link href="~/css/responsive.css" rel="stylesheet" media="screen">
+    <!--== Google Fonts ==-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Belgrano' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <header id="header">
+        <div id="menu" class="header-menu fixed">
+            <div class="box">
+                <div class="row">
+                    <nav role="navigation" class="col-sm-12">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!--== Logo ==-->
+                            <span class="navbar-brand logo">
+                                Evento
+                            </span>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <!--== Navigation Menu ==-->
+                            <ul class="nav navbar-nav">
+                                <li class="current"><a href="#header">Home</a></li>
+                                <li><a href="#about">About us</a></li>
+                                <li><a href="#schedule">Schedule</a></li>
+                                @*<li><a href="#blog">Blog</a></li>
+                                <li><a href="#prices">Pricing</a></li>
+                                <li><a href="#team">Our Team</a></li>
+                                <li><a href="#testimonial">Testimonials</a></li>*@
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!--== Site Description ==-->
+        @*<div class="header-cta">
+            <div class="container">
+                <div class="row">
+                    <div class="entry-content">
+                        <p><span class="start-text"><b>FROM SEPTEMBER 1, 2018</b></span></p>
+                        <h4 class="entry-title"><a href="#">Organizing World class events</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bg">
+            <div id="preloader">
+                <div class="preloader"></div>
+            </div>
+            <div class="main-slider" id="main-slider">
+                <ul class="slides">
+                    <li><img src="images/demo/bg-slide-01.jpg" alt="Slide Image" /></li>
+                    <li><img src="images/demo/bg-slide-02.jpg" alt="Slide Image 2" /></li>
+                </ul>
+            </div>
+        </div>*@
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/images/chicago.jpg" alt="Los Angeles">
+                </div>
+
+                <div class="item">
+                    <img src="~/images/ny.jpg" alt="Chicago">
+                </div>
+
+                <div class="item">
+                    <img src="~/images/la.jpg" alt="New York">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </header>
+    <div class="content">
+        <div class="container box">
+
+            <!--===============================-->
+            <!--== About us ===================-->
+            <!--===============================-->
+            <section id="about" class="about-us">
+                <div class="title-start col-md-4 col-md-offset-4">
+                    <br />
+                    <h2>About Us</h2>
+                    <p class="sub-text text-center">Know our great story</p>
+                </div>
+                <div class="container">
+                    <div class="about-first">
+                        <div class="block col-md-4">
+                            <div class="content-block">
+                                <i class="fa fa-users fa-3x"></i>
+                                <h3>Passionate Team</h3>
+                                <p>Evento is an experience management company created by partners with extensive experience in events, leisure, holidays and advertisement industry.</p>
+                            </div>
+                        </div>
+                        <div class="block col-md-4">
+                            <div class="content-block">
+                                <i class="fa fa-rocket fa-3x"></i>
+                                <h3>Inspiring Ideas</h3>
+                                <p>Events are our business. Evento Creative Services is a full-service events management company offering you all the support you need to stage that truly memorable experience.</p>
+                            </div>
+                        </div>
+                        <div class="block col-md-4">
+                            <div class="content-block">
+                                <i class="fa fa-trophy fa-3x"></i>
+                                <h3>Flawless Execution</h3>
+                                <p>Our commitment to our clients is executing the event absolutely in the same manner as it was planned and proposed to them.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-part">
+                        <div class="col-md-8">
+
+                            <h3>ABOUT US</h3>
+
+                            <p>
+                                Evento India Private Limited is among the top and best event management Companies based out of Chennai, India; a one stop solution for all your events. Our services include A-Z for events of all types and sizes, be it a corporate event, marketing & promotional events, Sports, wedding, concert, birthday party or any special events. We mean it when we call ourselves a full stack event management company, everything covered under one umbrella. You don't really have to look elsewhere when the Evento team-up with you.
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p> Design</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                    60%
+                                </div>
+                            </div>
+                            <br />
+                            <p> Idea</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                                    80%
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--==========-->
+            <!--===============================-->
+            <!--== Schedule ===================-->
+            <!--===============================-->
+            <section id="schedule" class="row">
+                <div class="title-start schedule-menu col-md-4 col-md-offset-4">
+                    <br />
+                    <h2>Events Schedule</h2>
+                    <p class="sub-text text-center">Check out the event details</p>
+                </div>
+                @*<button type="button" id="btnCollapse" class="btn btn-info" data-toggle="collapse" data-target=".timeline-body">
+                    <span class="glyphicon glyphicon-collapse-up"></span> 
+                    Collapse
+                </button>*@
+                <ul id="eventDetails" class="timeline">
+                    <li class="clearfix no-float"></li>
+                </ul>
+
+            </section>
+            
+        </div>
+    </div>
+
+    @*<div class="content mcontent">
+        <div id="gotop" class="gotop fa fa-arrow-up"></div>
+    </div>*@
+    @*</div>*@
+    <!-- Contact Area -->
+    <section id="contact" class="mapWrap">
+        <div id="googleMap" style="width:100%;"></div>
+        <div id="contact-area">
+            <div class="container">
+                @*<h2 class="block_title">Hey !!!</h2>*@
+                <div class="row">
+                    <div class="col-xs-12">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="moreDetails">
+                            @*<h2 class="con-title">More About me</h2>*@
+                            <p> Feel free to reach out to us<br />
+                            A coffee together could well be the beginning of something overwhelming  :) </p>
+                            <ul class="address">
+                                <li><i class="pe-7s-map-marker"></i><span>Unit No. M412, 4th Floor,<br>M Block, KG Centre Point,<br>Poonamallee Main Road, Chennai - 600123<br />Tamil Nadu, India.</span></li>
+                                <li><i class="pe-7s-mail"></i><span>contact@evento.com</span></li>
+                                <li><i class="pe-7s-phone"></i><span>+91 9677367474</span></li>
+                                @*<li><i class="pe-7s-global"></i><span><a href="#">www.themewagon.com</a></span></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <h2 class="con-title">Contact us</h2>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="user_name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="your_email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="InputMessage" id="user_message" class="form-control" placeholder="Enter your comments here" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" id="btnSubmitComments" class="btn medium">Let us know</button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- container -->
+        </div><!-- contact-area -->
+        <div id="social">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul class="scoialinks">
+                            <li class="normal-txt">Find us on</li>
+                            <li class="social-icons"><a class="facebook" href="https://www.facebook.com/" target="_blank"></a></li>
+                            <li class="social-icons"><a class="twitter" href="https://twitter.com/" target="_blank"></a></li>
+                            <li class="social-icons"><a class="linkedin" href="https://www.linkedin.com/" target="_blank"></a></li>
+                            <li class="social-icons"><a class="google-plus" href="https://plus.google.com" target="_blank"></a></li>
+                            <li class="social-icons"><a class="wordpress" href="https://wordpress.com" target="_blank"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!-- social -->
+    </section><!-- contact -->
+        <!-- Modal -->
+        @*<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Buy Tickets</button>*@
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <input type="hidden" id="Event" name="Event" />
+                        <h4 class="modal-title">Buy Tickets</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table id="BuyTickets" class="table" style="width:100%">
+                            <tr>
+                                <td>
+                                    <label>Enter Name:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="txtName" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Enter Mobile Number:</label>
+                                </td>
+                                <td>
+                                    <input type="tel" id="txtMobile" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Enter Email:</label>
+                                </td>
+                                <td>
+                                    <input type="email" id="txtEmail" required/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>No of Tickets:</label></td>
+                                <td><input type="number" id="NoofTkts" name="No of Tickets" min="1" onblur="Checkrate();" style="width:20%;" maxlength="2" required></td>                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label id="ticketrateId" name="ticketrateId"></label>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="hidden" id="hdnEventId" name="hdnEventId" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="btnBuyTickets" data-dismiss="modal">Buy Tickets</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="copyright">© Copyright 2018 Siva</p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="designed">Designed and Developed by Siva</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--== Javascript Files ==-->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="~/js/jquery-2.1.0.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+        @*<script src="~/js/bootstrap.js"></script>*@
+    <script src="~/js/jquery.scrollTo.js"></script>
+    <script src="~/js/jquery.nav.js"></script>
+    <script src="~/js/jquery.flexslider.js"></script>
+    <script src="~/js/jquery.accordion.js"></script>
+    <script src="~/js/jquery.placeholder.js"></script>
+    <script src="~/js/jquery.fitvids.js"></script>
+    <script src="~/js/gmap3.js"></script>
+    <script src="~/js/fancySelect.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var apiUrl = '@(System.Configuration.ConfigurationManager.AppSettings["ApiUrl"].ToString())'
+            var webappUrl = '@(System.Configuration.ConfigurationManager.AppSettings["WebUrl"].ToString())'
+
+            //$(".timeline-body").on("hide.bs.collapse", function () {
+            //    //$("#btnCollapse").html('<span class="glyphicon glyphicon-collapse-down"></span> Expand');
+            //    $("#btnCollapse").text("Expand");
+            //});
+            //$(".timeline-body").on("show.bs.collapse", function () {
+            //    //$("#btnCollapse").html('<span class="glyphicon glyphicon-collapse-up"></span> Collapse');
+            //    $("#btnCollapse").text("Collapse");
+            //});
+
+		  $("#testimonial-container").owlCarousel({
+
+		      navigation : false, // Show next and prev buttons
+		      slideSpeed : 700,
+		      paginationSpeed : 400,
+		      singleItem:true,
+            });
+
+          //var model = {
+          //    UserId: userId
+          //}
+
+          $.ajax({
+              //url: 'http://localhost:52077/api/Account/GetAllEvents',
+              url: apiUrl + 'api/Account/GetAllEvents',
+              //data: model,
+              type: "GET",
+              success: function (data) {
+                  $("#eventDetails").empty();
+                  if (data.Table.length > 0) {
+
+                      for (var i = 0; i < data.Table.length; i++) {
+                          //debugger
+                          if (i % 2 == 0) {
+                              $("#eventDetails").append("<li>" +
+                                  "<div class='timeline-badge'>" +
+                                  "<a><i class='fa fa-circle' id=''></i></a>" +
+                                  "</div >" +
+                                  "<div class='timeline-panel'>" +
+                                  "<div class='timeline-heading'>" +
+                                  "<h4>" + data.Table[i].Title + "</h4>" +
+                                  "</div >" +
+                                  "<div class='timeline-body'>" +
+                                  "<p class='timeline-desc col-md-6'>" + data.Table[i].Description + "</p>" +
+                                  "<p class='timeline-other col-md-6'>" +
+
+                                  "<em class='timeline-item'>" +
+                                  "Venue : " + data.Table[i].Location +
+                                  "</em>" +
+                                  "<em class='timeline-item'>" +
+                                  "Seats Available : " + data.Table[i].Seats +
+                                  "</em>" +
+                                  "<em id='tkt" + data.Table[i].Id + "' value=" + data.Table[i].TicketRate + " class='timeline-item'>" +
+                                  "Ticket : Rs." + data.Table[i].TicketRate +
+                                  "</em>" +
+                                  "<em class='timeline-item'>" +
+                                  "Date : " + data.Table[i].StartDateTime +
+                                  "</em>" +
+                                  "<em class='timeline-item'>" +
+                                  "Duration : " + data.Table[i].Duration +
+                                  "</em>" +
+                                  "</p>" +
+                                  "<div><button type= 'button' class='btn btn-info' id= '" + data.Table[i].Id + "' onclick='GetTicketRate(this)' data-toggle='modal' data-target='#myModal'>Buy Tickets</button ></div>" +
+                                  "</div>" +
+
+                                  "</div>" +
+
+                                  "</li >"
+                              );
+                          }
+                          else {
+                              $("#eventDetails").append("<li class='timeline-inverted'>" +
+                                  "<div class='timeline-badge'>" +
+                                  "<a><i class='fa fa-circle' id=''></i></a>" +
+                                  "</div >" +
+                                  "<div class='timeline-panel'>" +
+                                  "<div class='timeline-heading'>" +
+                                  "<h4>" + data.Table[i].Title + "</h4>" +
+                                  "</div >" +
+                                  "<div class='timeline-body'>" +
+                                  "<p class='timeline-desc col-md-6'>" + data.Table[i].Description + "</p>" +
+                                  "<p class='timeline-other col-md-6'>" +
+
+                                  "<em class='timeline-item'>" +
+                                  "Venue : " + data.Table[i].Location +
+                                  "</em>" +
+                                  "<em class='timeline-item'>" +
+                                  "Seats Available : " + data.Table[i].Seats +
+                                  "</em>" +
+                                  "<em id='tkt" + data.Table[i].Id + "' value=" + data.Table[i].TicketRate + " class='timeline-item'>" +
+                                  "Ticket: Rs." + data.Table[i].TicketRate +
+                                  "</em>" +
+                                  "<em class='timeline-item'>" +
+                                  "Date : " + data.Table[i].StartDateTime +
+                                  "</em>" +
+                                  "<em class='timeline-item'>" +
+                                  "Duration : " + data.Table[i].Duration +
+                                  "</em>" +
+                                  "</p>" +
+                                  "<div><button type= 'button' class='btn btn-info' id= '" + data.Table[i].Id + "' onclick='GetTicketRate(this)' data-toggle='modal' data-target='#myModal'>Buy Tickets</button ></div>" +
+                                  "</div>" +
+
+                                  "</div>" +
+                                  "</li >"
+                              );
+                          }
+                      }
+                  }
+                  else {
+                      $("#eventDetails").append("<p> No Events Found </p>");
+                  }
+              },
+              error: function (xhr, ajaxOptions, thrownError) {
+                  alert('Error');
+              }
+          });
+
+        });
+
+        function Checkrate() {
+            var noofrms = $("#NoofTkts").val();
+            var rateofrms = $("#Event").val();
+            var totalrate = noofrms * rateofrms;
+            $("#ticketrateId").text("Total - Rs. " + totalrate);
+        }
+
+        function GetTicketRate(e) {
+            $("#txtName").val(" ");
+            $("#txtEmail").val(" ");
+            $("#txtMobile").val(" ");
+            $("#ticketrateId").text(" ");
+            $("#NoofTkts").val(" ");
+            $("#hdnEventId").val(e.id);
+            var eventId = e.id;
+            var tktRate = $("#tkt" + eventId).attr("value");
+            //var tktRate = tktId.getAttribute("id").replace("tkt", "");
+            $("#Event").val(tktRate);
+        }
+
+        $("a").on('click', function (event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function () {
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+
+        //$('#btnCollapse').click(function () {
+        //    if ($('#btnCollapse').text() == "Expand")
+        //        $('#btnCollapse').text("Collapse");
+        //    else
+        //        $('#btnCollapse').text("Expand");
+        //});
+
+        $('#btnBuyTickets').click(function () {
+            //debugger
+            if ($("#txtName").val() == "" || $("#txtEmail").val() == "" || $("#txtMobile").val() == "" || $("#NoofTkts").val() == "") {
+
+            }
+            else {
+                var model = {
+                    Name: $("#txtName").val(),
+                    Email: $("#txtEmail").val(),
+                    Mobile: $("#txtMobile").val(),
+                    AmountPaid: $("#ticketrateId").text().split(".").pop().trim(),
+                    Seats: $("#NoofTkts").val(),
+                    Id: $("#hdnEventId").val(),
+                }
+
+                $.ajax({
+                    //url: 'http://localhost:52077/api/Account/POSTEventAttendees',
+                    url: apiUrl + 'api/Account/POSTEventAttendees',
+                    data: model,
+                    type: "POST",
+                    success: function (savingStatus) {
+                        alert('Thanks for purchansing the tickets');
+                        //window.location.href = "http://localhost:52043/Home/Home";
+                        window.location.href = webappUrl + "Home/Home";
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Error');
+                    }
+                });
+            }
+        });
+
+        $('#btnSubmitComments').click(function () {
+            //debugger
+            if ($("#user_name").val() == "" || $("#your_email").val() == "" || $("#user_message").val() == "") {
+
+            }
+            else {
+                var model = {
+                    Name: $("#user_name").val(),
+                    Email: $("#your_email").val(),
+                    UserComments: $("#user_message").val(),
+                }
+
+                $.ajax({
+                    //url: 'http://localhost:52077/api/Account/POSTUserComments',
+                    url: apiUrl + 'api/Account/POSTUserComments',
+                    data: model,
+                    type: "POST",
+                    success: function (savingStatus) {
+                        alert('Thanks for your valuable feedback!!!');
+                        $("#user_name").val(" ");
+                        $("#your_email").val(" ");
+                        $("#user_message").val(" ")
+                        //window.location.href = "http://localhost:52043/Home/Home";
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Error');
+                    }
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>

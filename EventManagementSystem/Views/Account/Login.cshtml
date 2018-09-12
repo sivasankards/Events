@@ -9,9 +9,7 @@
 @Scripts.Render("~/bundles/jqueryval")
 
 @using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
+{    
     <div class="form-horizontal">
         <h4>@*LoginViewModel*@</h4>
         <hr />
@@ -35,7 +33,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Login" id="btnLogin" class="btn btn-default" onclick="Login()" />
+                <input type="submit" value="Login" id="btnLogin" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -45,30 +43,14 @@
     @*@Scripts.Render("~/bundles/jqueryval")*@
 
 <script type="text/javascript">
-    //$('#btnLogin').click(function () {
-    //    //debugger
-    //    var datamodel = {
-    //        Email: $("#Email").val(),
-    //        Password: $("#Password").val(),            
-    //    }
-
-    //    $.ajax({
-    //        url: 'http://localhost:52077/api/Account/POSTLogin',
-    //        data: datamodel,
-    //        type: "POST",
-    //        success: function (savingStatus) {
-    //            alert('Success');
-    //            window.location.href("http://localhost:52043/Account/SetAuthentication" + datamodel.Email)
-    //        },
-    //        error: function (xhr, ajaxOptions, thrownError) {
-    //            alert('Error');
-    //        }
-    //    });
-
-    //});
+    $('#btnLogin').click(function (event) {
+        event.preventDefault();
+        Login();
+    });
 
     function Login()
     {
+        event.preventDefault();
         if ($("#Email").val() == "" || $("#Password").val() == "") {
             //return false;
         }
@@ -79,14 +61,13 @@
             }
 
             $.ajax({
-                url: 'http://localhost:52077/api/Account/POSTLogin',
+                url: apiUrl + 'api/Account/POSTLogin',
                 data: datamodel,
                 type: "POST",
                 cache: false,
                 success: function (data) {
                     alert('Login Successful');
-                    //$("#hdnEmail").val(data);
-                    window.location.href = "http://localhost:52043/Account/SetAuthentication?Name=" + data.Table[0].Name + "&Email=" + data.Table[0].Email + "&Id=" + data.Table[0].Id;
+                    window.location.href = webappUrl + "Account/SetAuthentication?Name=" + data.Table[0].Name + "&Email=" + data.Table[0].Email + "&Id=" + data.Table[0].Id;
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert('Error');

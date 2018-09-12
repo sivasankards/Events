@@ -1,0 +1,108 @@
+﻿@model EventManagementSystem.Models.NotificationModel
+
+@{
+    ViewBag.Title = "My Notification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="event-group-heading">My Notification</h1>
+
+<div class="row">
+    <input type="hidden" id="EventId" />
+    <table id="MyNotification" class="table table-striped" style="width:50%"></table>
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        var userId = '@Request.RequestContext.HttpContext.Session["UserId"]';
+
+        $(document).ready(function () {
+
+            var datamodel = {
+                UserId: userId                
+            }
+
+            $.ajax({
+                url: 'http://localhost:52077/api/Account/POSTMyNotification',
+                data: datamodel,
+                type: "POST",
+                success: function (data) {
+                    $("#MyNotification").empty();
+                    if (data.Table.length > 0) {
+                        //$("#MyNotification").append("<tr><th>Name</th><th>Email</th></tr>");
+                        for (var i = 0; i < data.Table.length; i++) {
+                            //debugger
+                            $("#MyNotification").append("<tr><td> You have a friend request from " +
+                                data.Table[i].Name + "</td> <td>" +
+                                "<input type='button' class='btn btn-default' onclick='acceptfriend(this)' id='"+ data.Table[i].Id + "' value='Accept Friend Request' /></td></tr>"
+                            );
+                        }
+                    }
+                    if (data.Table1.length > 0) {
+                        for (var i = 0; i < data.Table1.length; i++) {
+                            $("#EventId").val(data.Table1[i].EventId);
+                            $("#MyNotification").append("<tr><td> You have an event (" + data.Table1[i].Title + ") invite from " +
+                                data.Table1[i].Name + "</td> <td>" +
+                                "<input type='button' class='btn btn-default' onclick='acceptinvite(this)' id='" + data.Table1[i].Id + "' value='Accept Event Invite' /></td></tr>"
+                            );
+                        }
+                    }
+                    else if (data.Table.length == 0 && data.Table1.length == 0) {
+                        $("#MyNotification").append("<tr><td> You have no notifications. </td></tr>");
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+
+        });
+
+        function acceptfriend(e) {
+            var datamodel = {
+                UserId: userId,
+                FriendsId: e.id
+            }
+
+            $.ajax({
+                url: 'http://localhost:52077/api/Account/POSTAcceptFriend',
+                data: datamodel,
+                type: "POST",
+                cache: false,
+                success: function (data) {
+                    document.getElementById(e.id).disabled = true;
+                    alert('Friend Request Accepted');
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+        }
+
+        function acceptinvite(e) {
+            var datamodel = {
+                UserId: userId,
+                FriendsId: e.id,
+                EventId: $("#EventId").val()
+            }
+
+            $.ajax({
+                url: 'http://localhost:52077/api/Account/POSTAcceptInvite',
+                data: datamodel,
+                type: "POST",
+                cache: false,
+                success: function (data) {
+                    document.getElementById(e.id).disabled = true;
+                    alert('Event Request Accepted');
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+        }
+
+    </script>
+
+}

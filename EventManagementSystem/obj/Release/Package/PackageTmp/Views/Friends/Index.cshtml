@@ -1,0 +1,102 @@
+﻿@model IEnumerable<EventManagementSystem.Models.FriendsModel>
+
+@{
+    ViewBag.Title = "My Friends";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="event-group-heading">My Friends</h1>
+
+<div class="row">
+    <table id="MyFriends" class="table table-striped" style="width:50%"></table>
+</div>
+
+<h1 class="event-group-heading">Friend Suggestions</h1>
+
+<div class="row">
+    <table id="FriendSuggestion" class="table table-striped" style="width:50%"></table>    
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        var userId = '@Request.RequestContext.HttpContext.Session["UserId"]';
+
+        $(document).ready(function () {
+
+            var datamodel = {
+                UserId: userId
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:52077/api/Account/POSTFriendsList",
+                data: datamodel,
+                success: function (data) {
+                    $("#MyFriends").empty();
+                    if (data.Table.length > 0) {
+                        $("#MyFriends").append("<tr><th>Name</th><th>Email</th></tr>");
+                        for (var i = 0; i < data.Table.length; i++) {
+                            //debugger
+                            $("#MyFriends").append("<tr><td>" +
+                                data.Table[i].Name + "</td> <td>" +
+                                data.Table[i].Email + "</td> </tr>"
+                            );
+                        }
+                    }
+                    else {
+                        $("#MyFriends").append("<tr><td> You have no friends yet. </td></tr>");
+                    }
+
+                    $("#FriendSuggestion").empty();
+                    if (data.Table1.length > 0) {
+                        $("#FriendSuggestion").append("<tr><th>Name</th><th>Email</th><th>Action</th></tr>");
+                        for (var i = 0; i < data.Table1.length; i++) {
+                            //debugger
+                            $("#FriendSuggestion").append("<tr><td>" +
+                                data.Table1[i].Name + "</td> <td>" +
+                                data.Table1[i].Email + "</td> <td>" +
+                                "<input type='button' class='btn btn-default' onclick='addfriend(this)' id='"+data.Table1[i].Id+"' value='Add Friend' /></td></tr>"
+                            );
+                        }
+                    }
+                    else {
+                        $("#FriendSuggestion").append("<tr><td> No Friend Suggestions </td></tr>");
+                    }
+                },
+                failure: function (data) {
+                    alert(data.responseText);
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
+
+        });
+
+        function addfriend(e)
+        {            
+            var datamodel = {
+                UserId: userId,
+                FriendsId: e.id
+            }
+
+            $.ajax({
+                url: 'http://localhost:52077/api/Account/POSTFriendRequest',
+                data: datamodel,
+                type: "POST",
+                cache: false,
+                success: function (data) {
+                    document.getElementById(e.id).disabled = true;
+                    alert('Friend Request Sent');                    
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+        }
+
+    </script>
+
+}

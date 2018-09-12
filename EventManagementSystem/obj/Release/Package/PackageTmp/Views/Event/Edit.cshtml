@@ -1,0 +1,192 @@
+﻿@model EventManagementSystem.Models.EventInputModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>EventInputModel</h4>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input type="hidden" id="Event" name="Event" />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.IsPublic, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsPublic)
+                    @Html.ValidationMessageFor(model => model.IsPublic, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TicketRate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TicketRate, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Seats, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Seats, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" id="btnSave" class="btn btn-default" />
+                <input type="button" value="Cancel" id="btnCancel" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script type="text/javascript">
+        var userId = '@Request.RequestContext.HttpContext.Session["UserId"]';
+        $(document).ready(function () {
+            $("#Event").val(@ViewBag.EventId);
+            var datamodel = {
+                Id: @ViewBag.EventId
+            }
+
+            $.ajax({
+                //url: 'http://localhost:52077/api/Account/POSTEventDetails',
+                url: apiUrl + 'api/Account/POSTEventDetails',
+                data: datamodel,
+                type: "POST",
+                cache: false,
+                success: function (data) {
+                    //document.getElementById(e.id).disabled = true;
+                    $("#Title").val(data.Table[0].Title);
+                    $("#StartDateTime").val(data.Table[0].StartDateTime);
+                    $("#Duration").val(data.Table[0].Duration);
+                    $("#Description").val(data.Table[0].Description);
+                    $("#Location").val(data.Table[0].Location);
+                    $("#TicketRate").val(data.Table[0].TicketRate);
+                    $("#Seats").val(data.Table[0].Seats);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Error');
+                }
+            });
+
+        });
+
+        $('#btnCancel').click(function () {
+            //window.location.href = "http://localhost:52043/Event/MyEvents";
+            window.location.href = webappUrl + "Event/MyEvents";
+        });
+
+        $('#btnSave').click(function () {
+            //debugger
+            var UserId = '@Request.RequestContext.HttpContext.Session["UserId"]';
+            if ($("#Title").val() == "" || $("#StartDateTime").val() == "" || $("#Duration").val() == "") {
+
+            }
+            else {
+                var model = {
+                    Title: $("#Title").val(),
+                    StartDateTime: $("#StartDateTime").val(),
+                    Duration: $("#Duration").val(),
+                    Description: $("#Description").val(),
+                    Location: $("#Location").val(),
+                    //IsPublic: $("#IsPublic").is(':checked'),
+                    TicketRate: $("#TicketRate").val(),
+                    Seats: $("#Seats").val(),
+                    Id: $("#Event").val(),
+                }
+
+                $.ajax({
+                    //url: 'http://localhost:52077/api/Account/POSTEditEvent',
+                    url: apiUrl + 'api/Account/POSTEditEvent',
+                    data: model,
+                    type: "POST",
+                    success: function (savingStatus) {
+                        alert('Event Updated Successfully');
+                        //window.location.href = "http://localhost:52043/Event/MyEvents";
+                        window.location.href = webappUrl + "Event/MyEvents";
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Error');
+                    }
+                });
+            }
+        });
+
+        $(function () {
+            $('#StartDateTime').datetimepicker(
+                {
+                    format: 'MM-DD-YYYY HH:mm',
+                    sideBySide: true,
+                    showTodayButton: true
+                });
+        });
+
+        $(function () {
+            var date = new Date();
+            $('#Duration').datetimepicker(
+                {
+                    format: 'HH:mm',
+                    defaultDate: date,
+                    showClear: true
+                });
+        });
+</script>
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap-datetimepicker")
+}
+
+@section styles {
+    @Styles.Render("~/Content/bootstrap-datetimepicker")
+}

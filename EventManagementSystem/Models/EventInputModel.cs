@@ -23,12 +23,15 @@ namespace EventManagementSystem.Models
         public string Description { get; set; }
 
         [MaxLength(200)]
+        [Required]
         public string Location { get; set; }
 
         [Display(Name = "Is Public?")]
         public bool IsPublic { get; set; }
         [Display(Name = "TicketRate(in Rs.)")]
+        [Required(ErrorMessage = "TicketRate field is required.")]
         public string TicketRate { get; set; }
+        [Required]
         public int Seats { get; set; }
 
         public static EventInputModel CreateFromEvent(Event e)

@@ -9,8 +9,6 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
         @*<h4>EventInputModel</h4>*@
         <hr />
@@ -85,6 +83,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" id="btnSave" class="btn btn-default" />
+                <input type="button" value="Cancel" id="btnCancel" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -100,7 +99,7 @@
             }
 
             $.ajax({
-                url: 'http://localhost:52077/api/Account/POSTEventDetails',
+                url: apiUrl + 'api/Account/POSTEventDetails',
                 data: datamodel,
                 type: "POST",
                 cache: false,
@@ -121,8 +120,11 @@
 
         });
 
+        $('#btnCancel').click(function () {
+            window.location.href = webappUrl + "Event/MyEvents";
+        });
+
         $('#btnSave').click(function () {
-            //debugger
             var UserId = '@Request.RequestContext.HttpContext.Session["UserId"]';
             if ($("#Title").val() == "" || $("#StartDateTime").val() == "" || $("#Duration").val() == "") {
 
@@ -141,12 +143,12 @@
                 }
 
                 $.ajax({
-                    url: 'http://localhost:52077/api/Account/POSTEditEvent',
+                    url: apiUrl + 'api/Account/POSTEditEvent',
                     data: model,
                     type: "POST",
                     success: function (savingStatus) {
                         alert('Event Updated Successfully');
-                        window.location.href = "http://localhost:52043/Event/MyEvents";
+                        window.location.href = webappUrl + "Event/MyEvents";
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         alert('Error');

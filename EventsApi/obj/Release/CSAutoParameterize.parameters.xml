@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="EventCS-Web.config Connection String" description="EventCS Connection String used in web.config by the application to access the database." defaultValue="Data Source=.;Database=Events;Integrated Security=True" tags="SqlConnectionString">
+  <parameter name="EventCS-Web.config Connection String" description="EventCS Connection String used in web.config by the application to access the database." defaultValue="Data Source=301chennai.database.windows.net;Database=Events;Integrated Security=True;uid=chennai;password=Mindtree@123;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="D:\\My\ Project\\EventManagementSystem\\EventsApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EventCS']/@connectionString" />
   </parameter>
 </parameters>
